@@ -1,0 +1,15 @@
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/bin/Debug/net9.0/SubmissionService.Domain.deps.json
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/bin/Debug/net9.0/SubmissionService.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/bin/Debug/net9.0/SubmissionService.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/bin/Debug/net9.0/Common.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/bin/Debug/net9.0/Common.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/SubmissionService.Domain.csproj.AssemblyReference.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/SubmissionService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/SubmissionService.Domain.AssemblyInfoInputs.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/SubmissionService.Domain.AssemblyInfo.cs
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/SubmissionService.Domain.csproj.CoreCompileInputs.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/Submissi.99FCF6DF.Up2Date
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/SubmissionService.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/refint/SubmissionService.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/SubmissionService.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/SubmissionService/SubmissionService.Domain/obj/Debug/net9.0/ref/SubmissionService.Domain.dll

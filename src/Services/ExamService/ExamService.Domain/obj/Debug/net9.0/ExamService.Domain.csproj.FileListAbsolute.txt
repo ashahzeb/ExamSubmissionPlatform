@@ -1,0 +1,15 @@
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/bin/Debug/net9.0/ExamService.Domain.deps.json
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/bin/Debug/net9.0/ExamService.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/bin/Debug/net9.0/ExamService.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/bin/Debug/net9.0/Common.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/bin/Debug/net9.0/Common.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamService.Domain.csproj.AssemblyReference.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamService.Domain.AssemblyInfoInputs.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamService.Domain.AssemblyInfo.cs
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamService.Domain.csproj.CoreCompileInputs.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamServ.DEB18A3E.Up2Date
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamService.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/refint/ExamService.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ExamService.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/ExamService/ExamService.Domain/obj/Debug/net9.0/ref/ExamService.Domain.dll

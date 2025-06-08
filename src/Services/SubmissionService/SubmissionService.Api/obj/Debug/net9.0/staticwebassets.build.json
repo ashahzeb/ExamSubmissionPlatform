@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "qJn8pvSF6hYgxEiYYEh5zAXS4Ndn69Q6cAN1a301gUI=",
+  "Source": "SubmissionService.Api",
+  "BasePath": "_content/SubmissionService.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

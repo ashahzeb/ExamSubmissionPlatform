@@ -1,0 +1,627 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Api/AuthService.Api.csproj": {}
+  },
+  "projects": {
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Api/AuthService.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Api/AuthService.Api.csproj",
+        "projectName": "AuthService.Api",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Api/AuthService.Api.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/AuthService.Application.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/AuthService.Application.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Infrastructure/AuthService.Infrastructure.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Infrastructure/AuthService.Infrastructure.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/Common.Infrastructure.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/Common.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/AuthService.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/AuthService.Application.csproj",
+        "projectName": "AuthService.Application",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/AuthService.Application.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/AuthService.Domain.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/AuthService.Domain.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/Common.Application.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/Common.Application.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Contracts/Common.Contracts.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Contracts/Common.Contracts.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.8.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/AuthService.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/AuthService.Domain.csproj",
+        "projectName": "AuthService.Domain",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/AuthService.Domain.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Infrastructure/AuthService.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Infrastructure/AuthService.Infrastructure.csproj",
+        "projectName": "AuthService.Infrastructure",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Infrastructure/AuthService.Infrastructure.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/AuthService.Application.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Application/AuthService.Application.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/AuthService.Domain.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Services/AuthService/AuthService.Domain/AuthService.Domain.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/Common.Infrastructure.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/Common.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.7.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/Common.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/Common.Application.csproj",
+        "projectName": "Common.Application",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/Common.Application.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Contracts/Common.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Contracts/Common.Contracts.csproj",
+        "projectName": "Common.Contracts",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Contracts/Common.Contracts.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Contracts/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj",
+        "projectName": "Common.Domain",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/Common.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/Common.Infrastructure.csproj",
+        "projectName": "Common.Infrastructure",
+        "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/Common.Infrastructure.csproj",
+        "packagesPath": "/Users/ali/.nuget/packages/",
+        "outputPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/Common.Application.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Application/Common.Application.csproj"
+              },
+              "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj": {
+                "projectPath": "/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[6.1.0-preview1.25120.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Diagnostics.HealthChecks": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.7.10, )"
+            },
+            "System.Diagnostics.DiagnosticSource": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

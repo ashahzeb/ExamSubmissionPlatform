@@ -1,0 +1,11 @@
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/bin/Debug/net9.0/Common.Domain.deps.json
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/bin/Debug/net9.0/Common.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/bin/Debug/net9.0/Common.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/Common.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/Common.Domain.AssemblyInfoInputs.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/Common.Domain.AssemblyInfo.cs
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/Common.Domain.csproj.CoreCompileInputs.cache
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/Common.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/refint/Common.Domain.dll
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/Common.Domain.pdb
+/Users/ali/Workspace/ExamSubmissionPlatform/src/Shared/Common.Domain/obj/Debug/net9.0/ref/Common.Domain.dll
