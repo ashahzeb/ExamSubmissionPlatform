@@ -1,12 +1,12 @@
 using Common.Domain.Abstractions;
-using Common.Infrastructure.Resilience;
+using Common.Infrastructure.Data;
 using ExamService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace ExamService.Infrastructure.Data;
 
-public class ExamDbContext(DbContextOptions<ExamDbContext> options, IRetryService retryService, ILogger<ExamDbContext> logger) : ResilientDbContext(options, retryService, logger)
+public class ExamDbContext(DbContextOptions<ExamDbContext> options, IRetryService retryService, ILogger<ExamDbContext> logger) : BaseDbContext(options, retryService, logger)
 {
     public DbSet<Exam> Exams { get; set; }
 

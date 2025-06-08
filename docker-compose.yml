@@ -1,0 +1,261 @@
+services:
+  # API Gateway - Entry point
+  api-gateway:
+    build:
+      context: .
+      dockerfile: src/ApiGateway/ApiGateway.Api/Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - Authentication__Authority=http://auth-service
+      - ReverseProxy__Clusters__auth-cluster__Destinations__destination1__Address=http://auth-service/
+      - ReverseProxy__Clusters__exam-cluster__Destinations__destination1__Address=http://exam-service/
+      - ReverseProxy__Clusters__submission-cluster__Destinations__destination1__Address=http://submission-service/
+      - ReverseProxy__Clusters__notification-cluster__Destinations__destination1__Address=http://notification-service/
+      # Data Protection configuration
+      - DataProtection__ApplicationName=ExamSubmissionPlatform
+    volumes:
+      - api_gateway_data_protection:/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - auth-service
+      - exam-service
+      - submission-service
+      - notification-service
+    networks:
+      - exam-platform
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Auth Service
+  auth-service:
+    build:
+      context: .
+      dockerfile: src/Services/AuthService/AuthService.Api/Dockerfile
+    ports:
+      - "8001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=AuthDb;User Id=sa;Password=YourPassword123!;TrustServerCertificate=true;
+      - ConnectionStrings__MessageBroker=amqp://guest:guest@rabbitmq:5672/
+      - JwtSettings__SecretKey=d8a6362b248030d523c135efe3e15d5aed6111031ff2742d746e4d2c997d9b0f
+      - JwtSettings__Issuer=ExamPlatform
+      - JwtSettings__Audience=ExamPlatform
+      - JwtSettings__ExpirationMinutes=60
+      # Data Protection configuration
+      - DataProtection__ApplicationName=ExamSubmissionPlatform
+    volumes:
+      - auth_data_protection:/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - sql-server
+      - rabbitmq
+    networks:
+      - exam-platform
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Exam Service
+  exam-service:
+    build:
+      context: .
+      dockerfile: src/Services/ExamService/ExamService.Api/Dockerfile
+    ports:
+      - "8002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=ExamDb;User Id=sa;Password=YourPassword123!;TrustServerCertificate=true;
+      - ConnectionStrings__Redis=redis:6379
+      - ConnectionStrings__MessageBroker=amqp://guest:guest@rabbitmq:5672/
+      - Authentication__Authority=http://auth-service
+      # Data Protection configuration
+      - DataProtection__ApplicationName=ExamSubmissionPlatform
+    volumes:
+      - exam_data_protection:/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - sql-server
+      - redis
+      - rabbitmq
+      - auth-service
+    networks:
+      - exam-platform
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Submission Service
+  submission-service:
+    build:
+      context: .
+      dockerfile: src/Services/SubmissionService/SubmissionService.Api/Dockerfile
+    ports:
+      - "8003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=SubmissionDb;User Id=sa;Password=YourPassword123!;TrustServerCertificate=true;
+      - ConnectionStrings__MessageBroker=amqp://guest:guest@rabbitmq:5672/
+      - Authentication__Authority=http://auth-service
+      - Services__ExamService=http://exam-service
+      # Data Protection configuration
+      - DataProtection__ApplicationName=ExamSubmissionPlatform
+    volumes:
+      - submission_data_protection:/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - sql-server
+      - rabbitmq
+      - auth-service
+    networks:
+      - exam-platform
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Notification Service
+  notification-service:
+    build:
+      context: .
+      dockerfile: src/Services/NotificationService/NotificationService.Api/Dockerfile
+    ports:
+      - "8004:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=NotificationDb;User Id=sa;Password=YourPassword123!;TrustServerCertificate=true;
+      - ConnectionStrings__MessageBroker=amqp://guest:guest@rabbitmq:5672/
+      - Authentication__Authority=http://auth-service
+      - Services__AuthService=http://auth-service
+      - Services__ExamService=http://exam-service
+      # Using MailHog for development email testing
+      - Smtp__Host=mailhog
+      - Smtp__Port=1025
+      - Smtp__Username=test
+      - Smtp__Password=test
+      - Smtp__FromAddress=noreply@examplatform.com
+      # Data Protection configuration
+      - DataProtection__ApplicationName=ExamSubmissionPlatform
+    volumes:
+      - notification_data_protection:/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - sql-server
+      - rabbitmq
+      - mailhog
+      - auth-service
+    networks:
+      - exam-platform
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # SQL Server Database
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourPassword123!
+      - MSSQL_PID=Developer
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "YourPassword123!" -Q "SELECT 1"
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql-data:/var/opt/mssql
+    networks:
+      - exam-platform
+    restart: unless-stopped
+
+  # RabbitMQ Message Broker
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_VHOST=/
+      - RABBITMQ_ERLANG_COOKIE=unique_cookie_for_clustering
+      # Disable deprecated features warnings
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit_feature_flags +deprecated_features.permit.management_metrics_collection=true
+    ports:
+      - "5672:5672"   # AMQP port
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - exam-platform
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --maxmemory 128mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - exam-platform
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # MailHog for email testing
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "1025:1025" # SMTP
+      - "8025:8025" # Web UI
+    networks:
+      - exam-platform
+    restart: unless-stopped
+
+volumes:
+  sql-data:
+  rabbitmq-data:
+  redis-data:
+  # Data Protection Key volumes to persist authentication keys
+  api_gateway_data_protection:
+  auth_data_protection:
+  exam_data_protection:
+  submission_data_protection:
+  notification_data_protection:
+
+networks:
+  exam-platform:
+    driver: bridge

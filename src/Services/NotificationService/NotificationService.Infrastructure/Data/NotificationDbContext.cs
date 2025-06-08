@@ -2,12 +2,13 @@ using NotificationService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using Common.Domain.Abstractions;
-using Common.Infrastructure.Resilience;
+using Common.Infrastructure.Data;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace NotificationService.Infrastructure.Data;
 
-public class NotificationDbContext(DbContextOptions<NotificationDbContext> options, IRetryService retryService, ILogger<NotificationDbContext> logger) : ResilientDbContext(options, retryService, logger)
+public class NotificationDbContext(DbContextOptions<NotificationDbContext> options, IRetryService retryService, ILogger<NotificationDbContext> logger) : BaseDbContext(options, retryService, logger)
 {
     public DbSet<Notification> Notifications { get; set; }
 
@@ -26,11 +27,15 @@ public class NotificationDbContext(DbContextOptions<NotificationDbContext> optio
             entity.Property(e => e.Status).IsRequired();
             entity.Property(e => e.FailureReason).HasMaxLength(1000);
             
-            // Store metadata as JSON
+            // Store metadata as JSON with proper value comparer
             entity.Property(e => e.Metadata)
                 .HasConversion(
                     v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
-                    v => JsonSerializer.Deserialize<Dictionary<string, object>>(v, (JsonSerializerOptions?)null) ?? new Dictionary<string, object>());
+                    v => JsonSerializer.Deserialize<Dictionary<string, object>>(v, (JsonSerializerOptions?)null) ?? new Dictionary<string, object>())
+                .Metadata.SetValueComparer(new ValueComparer<Dictionary<string, object>>(
+                    (c1, c2) => c1!.SequenceEqual(c2!),
+                    c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+                    c => c.ToDictionary(kvp => kvp.Key, kvp => kvp.Value)));
 
             // Indexes
             entity.HasIndex(e => e.UserId);

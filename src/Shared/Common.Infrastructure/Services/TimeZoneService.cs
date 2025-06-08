@@ -1,8 +1,7 @@
-using ExamService.Application.Abstractions;
-using ExamService.Domain.Entities;
+using Common.Application.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace ExamService.Infrastructure.Services;
+namespace Common.Infrastructure.Services;
 
 public class TimeZoneService(ILogger<TimeZoneService> logger) : ITimeZoneService
 {
@@ -49,19 +48,11 @@ public class TimeZoneService(ILogger<TimeZoneService> logger) : ITimeZoneService
         }
     }
 
-    public bool IsWithinExamWindow(DateTime currentUtc, Exam exam)
+    public bool IsWithinExamWindow(DateTime currentUtc, DateTime startTime, DateTime endTime)
     {
-        try
-        {
-            var examStartUtc = exam.StartTime;
-            var examEndUtc = exam.EndTime;
+        var examStartUtc = startTime;
+        var examEndUtc = endTime;
 
-            return currentUtc >= examStartUtc && currentUtc <= examEndUtc;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error checking exam window for exam {ExamId}", exam.Id);
-            return false;
-        }
+        return currentUtc >= examStartUtc && currentUtc <= examEndUtc;
     }
 }

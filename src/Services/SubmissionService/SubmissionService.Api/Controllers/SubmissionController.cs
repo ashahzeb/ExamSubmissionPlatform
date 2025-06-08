@@ -13,24 +13,17 @@ namespace SubmissionService.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
-public class SubmissionController : ControllerBase
+public class SubmissionController(
+    ICommandHandler<SubmitExamCommand, SubmitExamResult> submitExamHandler,
+    IQueryHandler<GetSubmissionQuery, SubmissionDto> getSubmissionHandler,
+    IQueryHandler<GetUserSubmissionsQuery, IEnumerable<SubmissionDto>> getUserSubmissionsHandler,
+    ILogger<SubmissionController> logger)
+    : ControllerBase
 {
-    private readonly ICommandHandler<SubmitExamCommand, SubmitExamResult> _submitExamHandler;
-    private readonly IQueryHandler<GetSubmissionQuery, SubmissionDto> _getSubmissionHandler;
-    private readonly IQueryHandler<GetUserSubmissionsQuery, IEnumerable<SubmissionDto>> _getUserSubmissionsHandler;
-    private readonly ILogger<SubmissionController> _logger;
-
-    public SubmissionController(
-        ICommandHandler<SubmitExamCommand, SubmitExamResult> submitExamHandler,
-        IQueryHandler<GetSubmissionQuery, SubmissionDto> getSubmissionHandler,
-        IQueryHandler<GetUserSubmissionsQuery, IEnumerable<SubmissionDto>> getUserSubmissionsHandler,
-        ILogger<SubmissionController> logger)
-    {
-        _submitExamHandler = submitExamHandler ?? throw new ArgumentNullException(nameof(submitExamHandler));
-        _getSubmissionHandler = getSubmissionHandler ?? throw new ArgumentNullException(nameof(getSubmissionHandler));
-        _getUserSubmissionsHandler = getUserSubmissionsHandler ?? throw new ArgumentNullException(nameof(getUserSubmissionsHandler));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-    }
+    private readonly ICommandHandler<SubmitExamCommand, SubmitExamResult> _submitExamHandler = submitExamHandler ?? throw new ArgumentNullException(nameof(submitExamHandler));
+    private readonly IQueryHandler<GetSubmissionQuery, SubmissionDto> _getSubmissionHandler = getSubmissionHandler ?? throw new ArgumentNullException(nameof(getSubmissionHandler));
+    private readonly IQueryHandler<GetUserSubmissionsQuery, IEnumerable<SubmissionDto>> _getUserSubmissionsHandler = getUserSubmissionsHandler ?? throw new ArgumentNullException(nameof(getUserSubmissionsHandler));
+    private readonly ILogger<SubmissionController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
     [HttpPost("submit")]
     public async Task<ActionResult<SubmitExamResult>> SubmitExam([FromBody] SubmitExamRequest request)

@@ -1,12 +1,12 @@
 using Common.Domain.Abstractions;
-using Common.Infrastructure.Resilience;
+using Common.Infrastructure.Data;
 using SubmissionService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace SubmissionService.Infrastructure.Data;
 
-public class SubmissionDbContext(DbContextOptions<SubmissionDbContext> options, IRetryService retryService, ILogger<SubmissionDbContext> logger) : ResilientDbContext(options, retryService, logger)
+public class SubmissionDbContext(DbContextOptions<SubmissionDbContext> options, IRetryService retryService, ILogger<SubmissionDbContext> logger) : BaseDbContext(options, retryService, logger)
 {
     public DbSet<ExamSubmission> Submissions { get; set; }
 

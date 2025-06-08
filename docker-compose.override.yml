@@ -1,0 +1,30 @@
+services:
+  api-gateway:
+    environment:
+      - ASPNETCORE_LOGGING__LOGLEVEL__DEFAULT=Information
+    volumes:
+      - ./logs/api-gateway:/app/logs
+
+  auth-service:
+    environment:
+      - ASPNETCORE_LOGGING__LOGLEVEL__DEFAULT=Information
+    volumes:
+      - ./logs/auth-service:/app/logs
+
+  exam-service:
+    environment:
+      - ASPNETCORE_LOGGING__LOGLEVEL__DEFAULT=Information
+    volumes:
+      - ./logs/exam-service:/app/logs
+
+  submission-service:
+    environment:
+      - ASPNETCORE_LOGGING__LOGLEVEL__DEFAULT=Information
+    volumes:
+      - ./logs/submission-service:/app/logs
+
+  notification-service:
+    environment:
+      - ASPNETCORE_LOGGING__LOGLEVEL__DEFAULT=Information
+    volumes:
+      - ./logs/notification-service:/app/logs

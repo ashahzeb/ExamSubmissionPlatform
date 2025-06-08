@@ -12,6 +12,7 @@ public class SubmitExamUseCase(
     ISubmissionRepository submissionRepository,
     IExamServiceClient examServiceClient,
     IEventPublisher eventPublisher,
+    ITimeZoneService timeZoneService,
     ILogger<SubmitExamUseCase> logger)
     : ICommandHandler<SubmitExamCommand, SubmitExamResult>
 {
@@ -19,6 +20,7 @@ public class SubmitExamUseCase(
     private readonly IExamServiceClient _examServiceClient = examServiceClient ?? throw new ArgumentNullException(nameof(examServiceClient));
     private readonly IEventPublisher _eventPublisher = eventPublisher ?? throw new ArgumentNullException(nameof(eventPublisher));
     private readonly ILogger<SubmitExamUseCase> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    private readonly ITimeZoneService _timeZoneService = timeZoneService ?? throw new ArgumentNullException(nameof(timeZoneService));
 
     public async Task<SubmitExamResult> HandleAsync(SubmitExamCommand command, CancellationToken cancellationToken = default)
     {
@@ -42,8 +44,7 @@ public class SubmitExamUseCase(
             }
 
             // 2. Check submission window
-            var currentTime = DateTime.UtcNow;
-            if (currentTime < examDetails.StartTime || currentTime > examDetails.EndTime)
+            if (!_timeZoneService.IsWithinExamWindow(DateTime.UtcNow, examDetails.StartTime, examDetails.EndTime))
             {
                 _logger.LogWarning("Submission outside time window for exam {ExamId}", command.ExamId);
                 return SubmitExamResult.Failure("Submission deadline has passed");

@@ -1,12 +1,12 @@
 using AuthService.Domain.Entities;
 using Common.Domain.Abstractions;
-using Common.Infrastructure.Resilience;
+using Common.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace AuthService.Infrastructure.Data;
 
-public class AuthDbContext(DbContextOptions<AuthDbContext> options, IRetryService retryService, ILogger<AuthDbContext> logger) : ResilientDbContext(options, retryService, logger)
+public class AuthDbContext(DbContextOptions<AuthDbContext> options, IRetryService retryService, ILogger<AuthDbContext> logger) : BaseDbContext(options, retryService, logger)
 {
     public DbSet<User> Users { get; set; }
 
