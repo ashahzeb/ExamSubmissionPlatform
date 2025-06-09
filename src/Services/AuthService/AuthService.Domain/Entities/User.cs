@@ -1,25 +1,25 @@
-using Common.Domain;
 using Common.Domain.Entities;
 
 namespace AuthService.Domain.Entities;
 
 public class User : BaseEntity
 {
-    public string Email { get; private set; }
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string PasswordHash { get; private set; }
-    public bool IsActive { get; private set; }
-    public DateTime? LastLoginAt { get; private set; }
+    public string Email { get; protected set; } = string.Empty;
+    public string FirstName { get; protected set; } = string.Empty;
+    public string LastName { get; protected set; } = string.Empty;
+    public string PasswordHash { get; protected set; } = string.Empty;
+    public bool IsActive { get; protected set; } = true;
+    public DateTime? LastLoginAt { get; protected set; }
 
-    private User() { }
+    // Parameterless constructor for EF Core
+    public User() { }
 
     private User(string email, string firstName, string lastName, string passwordHash)
     {
-        Email = email ?? throw new ArgumentNullException(nameof(email));
-        FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
-        LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
-        PasswordHash = passwordHash ?? throw new ArgumentNullException(nameof(passwordHash));
+        Email = email?.Trim() ?? string.Empty;
+        FirstName = firstName?.Trim() ?? string.Empty;
+        LastName = lastName?.Trim() ?? string.Empty;
+        PasswordHash = passwordHash ?? string.Empty;
         IsActive = true;
     }
 
@@ -30,6 +30,9 @@ public class User : BaseEntity
         
         if (!IsValidEmail(email))
             throw new ArgumentException("Invalid email format", nameof(email));
+
+        if (string.IsNullOrWhiteSpace(passwordHash))
+            throw new ArgumentException("Password hash cannot be empty", nameof(passwordHash));
 
         return new User(email, firstName, lastName, passwordHash);
     }

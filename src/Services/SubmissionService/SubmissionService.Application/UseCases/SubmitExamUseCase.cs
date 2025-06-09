@@ -36,13 +36,7 @@ public class SubmitExamUseCase(
                 _logger.LogWarning("Exam not found: {ExamId}", command.ExamId);
                 return SubmitExamResult.Failure("Exam not found");
             }
-
-            if (!examDetails.IsActive)
-            {
-                _logger.LogWarning("Exam is not active: {ExamId}", command.ExamId);
-                return SubmitExamResult.Failure("Exam is not active");
-            }
-
+            
             // 2. Check submission window
             if (!_timeZoneService.IsWithinExamWindow(DateTime.UtcNow, examDetails.StartTime, examDetails.EndTime))
             {
@@ -61,29 +55,20 @@ public class SubmitExamUseCase(
                 return SubmitExamResult.Failure($"Maximum attempts ({examDetails.MaxAttempts}) exceeded");
             }
 
-            // 4. Calculate time taken
-            var timeTaken = DateTime.UtcNow - command.StartedAt;
-            if (timeTaken.TotalMinutes > examDetails.DurationMinutes)
-            {
-                _logger.LogWarning("Submission time exceeded for User {UserId}, Exam {ExamId}", 
-                    command.UserId, command.ExamId);
-                return SubmitExamResult.Failure("Exam duration exceeded");
-            }
-
-            // 5. Create and save submission
+            // 4. Create and save submission
             var submission = ExamSubmission.Create(
                 command.ExamId,
                 command.UserId,
                 command.Content,
                 DateTime.UtcNow,
                 attemptNumber,
-                timeTaken,
+                null,
                 command.UserAgent,
                 command.IpAddress);
 
             await _submissionRepository.AddAsync(submission);
 
-            // 6. Publish event
+            // 5. Publish event
             var submittedEvent = new ExamSubmittedEvent(
                 submission.Id,
                 submission.ExamId,

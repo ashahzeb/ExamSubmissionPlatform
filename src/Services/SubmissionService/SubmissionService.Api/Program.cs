@@ -24,6 +24,7 @@ builder.Host.UseSerilogLogging(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 
 // Repositories
 builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
@@ -32,7 +33,7 @@ builder.Services.AddScoped<ITimeZoneService, TimeZoneService>();
 // HTTP Clients
 builder.Services.AddHttpClient<IExamServiceClient, ExamServiceClient>(client =>
 {
-    client.BaseAddress = new Uri(builder.Configuration["Services:ExamService"] ?? "http://localhost:5002");
+    client.BaseAddress = new Uri(builder.Configuration["Services:ExamService"] ?? "http://localhost:8002");
     client.Timeout = TimeSpan.FromSeconds(30);
 });
 
@@ -90,3 +91,5 @@ app.MapHealthChecks("/health");
 
 await app.MigrateDatabase<SubmissionDbContext>();
 app.Run();
+
+public partial class Program { }

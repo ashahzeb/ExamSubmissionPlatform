@@ -29,7 +29,7 @@ public class JwtTokenService : IJwtTokenService
             var secretKey = jwtSettings["SecretKey"] ?? throw new InvalidOperationException("JWT SecretKey not configured");
             var issuer = jwtSettings["Issuer"] ?? "ExamPlatform";
             var audience = jwtSettings["Audience"] ?? "ExamPlatform";
-            var expirationMinutes = int.Parse(jwtSettings["ExpirationMinutes"] ?? "60");
+            var expirationMinutes = int.Parse(jwtSettings["ExpirationMinutes"] ?? "90");
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

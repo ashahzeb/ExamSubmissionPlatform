@@ -29,7 +29,7 @@ public class Exam : BaseEntity
         DurationMinutes = durationMinutes;
         CreatedByUserId = createdByUserId;
         MaxAttempts = maxAttempts;
-        Status = ExamStatus.Draft;
+        Status = ExamStatus.Active;
         IsPublished = false;
     }
 

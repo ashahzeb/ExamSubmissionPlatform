@@ -104,3 +104,5 @@ app.MapHealthChecks("/health");
 
 await app.MigrateDatabase<NotificationDbContext>();
 app.Run();
+
+public partial class Program { }

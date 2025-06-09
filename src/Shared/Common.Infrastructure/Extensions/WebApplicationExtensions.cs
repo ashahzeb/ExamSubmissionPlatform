@@ -29,8 +29,15 @@ public static class WebApplicationExtensions
         
         try
         {
-            await context.Database.MigrateAsync();
-            app.Logger.LogInformation("Database migration completed for {ContextType}", typeof(TContext).Name);
+            if (context.Database.IsRelational())
+            {
+                await context.Database.MigrateAsync();
+                app.Logger.LogInformation("Database migration completed for {ContextType}", typeof(TContext).Name);
+            }
+            else
+            {
+                await context.Database.EnsureCreatedAsync();
+            }
         }
         catch (Exception ex)
         {

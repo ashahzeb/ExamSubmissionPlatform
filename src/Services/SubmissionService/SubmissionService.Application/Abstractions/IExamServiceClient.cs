@@ -6,5 +6,4 @@ public interface IExamServiceClient
 {
     Task<ExamDetailsDto?> GetExamAsync(Guid examId);
     Task<bool> ExamExistsAsync(Guid examId);
-    Task<bool> IsExamActiveAsync(Guid examId);
 }

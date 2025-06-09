@@ -34,9 +34,30 @@ public class UserRepository : IUserRepository
 
     public async Task AddAsync(User user)
     {
-        await _context.Users.AddAsync(user);
-        await _context.SaveChangesAsync();
-        _logger.LogInformation("User created: {UserId}", user.Id);
+        try
+        {
+            _logger.LogInformation("Adding user to context: {UserId}, {Email}", user.Id, user.Email);
+            
+            // Add to context
+            var entityEntry = await _context.Users.AddAsync(user);
+            _logger.LogInformation("User added to context with state: {State}", entityEntry.State);
+            
+            // Save changes
+            var result = await _context.SaveChangesAsync();
+            _logger.LogInformation("SaveChanges result: {Result} rows affected", result);
+            
+            if (result == 0)
+            {
+                throw new InvalidOperationException($"Failed to save user {user.Id} - no rows affected");
+            }
+            
+            _logger.LogInformation("User created successfully: {UserId}", user.Id);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to create user: {UserId}, {Email}", user.Id, user.Email);
+            throw;
+        }
     }
 
     public async Task UpdateAsync(User user)

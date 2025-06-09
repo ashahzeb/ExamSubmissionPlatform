@@ -84,3 +84,5 @@ app.MapHealthChecks("/health");
 
 await app.MigrateDatabase<ExamDbContext>();
 app.Run();
+
+public partial class Program { }

@@ -1,19 +1,30 @@
+using System.Net.Http.Headers;
 using SubmissionService.Application.DTOs;
 using SubmissionService.Application.Abstractions;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace SubmissionService.Infrastructure.Clients;
 
-public class ExamServiceClient(HttpClient httpClient, ILogger<ExamServiceClient> logger) : IExamServiceClient
+public class ExamServiceClient : IExamServiceClient
 {
-    private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-    private readonly ILogger<ExamServiceClient> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    private readonly HttpClient _httpClient;
+    private readonly ILogger<ExamServiceClient> _logger;
+    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly JsonSerializerOptions _jsonOptions = new()
     {
         PropertyNameCaseInsensitive = true
     };
 
+    public ExamServiceClient(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, ILogger<ExamServiceClient> logger)
+    {
+        _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+        SetAuthorizationHeader();
+    }
+    
     public async Task<ExamDetailsDto?> GetExamAsync(Guid examId)
     {
         try
@@ -62,10 +73,14 @@ public class ExamServiceClient(HttpClient httpClient, ILogger<ExamServiceClient>
             return false;
         }
     }
-
-    public async Task<bool> IsExamActiveAsync(Guid examId)
+    
+    
+    private void SetAuthorizationHeader()
     {
-        var exam = await GetExamAsync(examId);
-        return exam?.IsActive ?? false;
+        var authHeader = _httpContextAccessor.HttpContext?.Request.Headers["Authorization"].ToString();
+        if (!string.IsNullOrEmpty(authHeader))
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(authHeader);
+        }
     }
 }

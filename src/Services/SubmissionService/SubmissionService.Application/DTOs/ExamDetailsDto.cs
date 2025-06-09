@@ -8,5 +8,4 @@ public class ExamDetailsDto
     public DateTime EndTime { get; set; }
     public int DurationMinutes { get; set; }
     public int MaxAttempts { get; set; }
-    public bool IsActive { get; set; }
 }

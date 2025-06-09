@@ -59,3 +59,5 @@ app.MapHealthChecks("/health");
 
 await app.MigrateDatabase<AuthDbContext>();
 app.Run();
+
+public partial class Program { }
